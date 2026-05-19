@@ -106,25 +106,11 @@ export function FaqSection() {
           <div className="h-px bg-[#183e2c]/10" />
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-12 md:mt-14">
-          <p className="font-sans text-[#183e2c]/60 text-base mb-6">
-            Still have questions? Reach out and we'll be happy to help.
+        {/* Transition into appointment section */}
+        <div className="text-center mt-14 md:mt-16">
+          <p className="font-serif text-xl md:text-2xl text-[#183e2c]/70 italic leading-relaxed">
+            Ready to take the next step? We'd love to hear from you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <a
-              href="#appointment"
-              className="font-sans text-xs font-semibold tracking-[0.18em] uppercase text-white bg-[#183e2c] px-7 py-3.5 rounded-sm hover:bg-[#1f4f38] transition-colors"
-            >
-              Request Appointment
-            </a>
-            <a
-              href="tel:615-857-9089"
-              className="font-sans text-xs font-semibold tracking-[0.18em] uppercase text-[#183e2c] border border-[#183e2c]/30 px-7 py-3.5 rounded-sm hover:border-[#183e2c]/60 transition-colors"
-            >
-              Contact the Office
-            </a>
-          </div>
         </div>
       </div>
     </section>
