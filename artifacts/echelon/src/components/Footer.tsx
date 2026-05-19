@@ -1,4 +1,4 @@
-import logoImage from "@assets/logo_transparent.png";
+import logoImage from "@assets/logo_trimmed.png";
 
 export function Footer() {
   return (

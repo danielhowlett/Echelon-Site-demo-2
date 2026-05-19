@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImage from "@assets/logo_transparent.png";
+import logoImage from "@assets/logo_trimmed.png";
 
 export function TopNav() {
   const [isScrolled, setIsScrolled] = useState(false);
