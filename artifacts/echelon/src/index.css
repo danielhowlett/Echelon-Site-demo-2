@@ -183,8 +183,8 @@
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: min(78vh, 720px);
-  max-height: 760px;
+  height: calc(100vh - 64px);
+  max-height: 100vh;
   overflow: hidden;
 }
 

@@ -30,7 +30,14 @@ export function HeroSection() {
       {/* Right — Image panel */}
       <div className="hero-image">
         <img src={heroImage} alt="Spinal anatomy model" />
-        <div className="overlay" />
+        {/* Gradient blending left edge into green panel */}
+        <div
+          className="overlay"
+          style={{
+            background:
+              "linear-gradient(to right, #183e2c 0%, rgba(24,62,44,0.55) 30%, rgba(24,62,44,0.1) 70%, transparent 100%)",
+          }}
+        />
       </div>
 
     </section>
