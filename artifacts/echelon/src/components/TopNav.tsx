@@ -28,8 +28,8 @@ export function TopNav() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
           isScrolled
-            ? "bg-[#fbf9f8]/95 backdrop-blur-md border-[#d4cdc3]/50 shadow-sm py-3"
-            : "bg-[#fbf9f8]/90 backdrop-blur-md border-[#d4cdc3]/30 py-4 md:py-5"
+            ? "bg-[#fffbe9]/95 backdrop-blur-md border-[#d4cdc3]/50 shadow-sm py-3"
+            : "bg-[#fffbe9]/90 backdrop-blur-md border-[#d4cdc3]/30 py-4 md:py-5"
         }`}
       >
         <div className="container mx-auto px-5 md:px-10 flex items-center justify-between gap-4">
