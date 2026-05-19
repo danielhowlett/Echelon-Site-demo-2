@@ -47,37 +47,40 @@ export function ContactSection() {
   };
 
   return (
-    <section id="appointment" className="bg-[#fffbe9] py-20 px-6 md:px-20">
+    <section id="appointment" className="bg-[#fffbe9] py-16 md:py-24 px-5 md:px-10 lg:px-20">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="text-center mb-10 md:mb-14"
         >
-          <h2 className="font-serif text-4xl md:text-5xl text-[#183e2c] mb-4">
+          <h2
+            className="font-serif text-[#183e2c] mb-4"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+          >
             Request an Appointment
           </h2>
-          <p className="font-sans text-[#414843] text-lg max-w-2xl mx-auto">
+          <p className="font-sans text-[#414843] text-base md:text-lg max-w-2xl mx-auto">
             Send us your information and we'll follow up to confirm availability. You can also call, email, or visit us inside VitaLive Health and Wellness.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
           {/* Left — Appointment Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
-            className="bg-white rounded-2xl p-8 md:p-10 border border-[#d4cdc3]/30 shadow-sm"
+            className="bg-white rounded-2xl p-7 md:p-10 border border-[#d4cdc3]/30 shadow-sm"
           >
-            <h3 className="font-serif text-2xl text-[#183e2c] mb-8">Book Your Visit</h3>
+            <h3 className="font-serif text-xl md:text-2xl text-[#183e2c] mb-7">Book Your Visit</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <FormField
                     control={form.control}
                     name="name"
@@ -116,7 +119,7 @@ export function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <FormField
                     control={form.control}
                     name="email"
@@ -171,7 +174,7 @@ export function ContactSection() {
                       <FormControl>
                         <Textarea
                           placeholder="Briefly describe your reason for visiting..."
-                          className="resize-none border-0 border-b border-[#d4cdc3] rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-base min-h-[90px]"
+                          className="resize-none border-0 border-b border-[#d4cdc3] rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-base min-h-[80px]"
                           {...field}
                           data-testid="textarea-reason"
                         />
@@ -199,18 +202,18 @@ export function ContactSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-5"
             id="location"
           >
-            <div className="bg-[#f5f3f3] rounded-2xl p-8 border border-[#d4cdc3]/20 shadow-sm">
-              <h3 className="font-serif text-2xl text-[#183e2c] mb-1">Find Us</h3>
+            <div className="bg-[#f5f3f3] rounded-2xl p-7 md:p-8 border border-[#d4cdc3]/20 shadow-sm">
+              <h3 className="font-serif text-xl md:text-2xl text-[#183e2c] mb-1">Find Us</h3>
               <p className="font-sans text-[#414843] text-sm mb-6">
                 Located inside VitaLive Health and Wellness
               </p>
 
-              <div className="space-y-5 mb-8">
+              <div className="space-y-4 mb-7">
                 <div className="flex gap-3 items-start">
                   <span className="material-symbols-outlined text-[#183e2c] text-xl shrink-0 mt-0.5">location_on</span>
                   <div>
@@ -221,24 +224,20 @@ export function ContactSection() {
 
                 <div className="flex gap-3 items-start">
                   <span className="material-symbols-outlined text-[#183e2c] text-xl shrink-0 mt-0.5">phone</span>
-                  <div>
-                    <a href="tel:615-857-9089" className="font-sans text-[#1b1c1c] font-medium hover:text-[#183e2c] transition-colors">
-                      615-857-9089
-                    </a>
-                  </div>
+                  <a href="tel:615-857-9089" className="font-sans text-[#1b1c1c] font-medium hover:text-[#183e2c] transition-colors">
+                    615-857-9089
+                  </a>
                 </div>
 
                 <div className="flex gap-3 items-start">
                   <span className="material-symbols-outlined text-[#183e2c] text-xl shrink-0 mt-0.5">mail</span>
-                  <div>
-                    <a
-                      href="mailto:echelonchiropracticdickson@gmail.com"
-                      className="font-sans text-[#1b1c1c] font-medium hover:text-[#183e2c] transition-colors break-words"
-                      style={{ wordBreak: "break-word" }}
-                    >
-                      echelonchiropracticdickson@gmail.com
-                    </a>
-                  </div>
+                  <a
+                    href="mailto:echelonchiropracticdickson@gmail.com"
+                    className="font-sans text-[#1b1c1c] font-medium hover:text-[#183e2c] transition-colors"
+                    style={{ wordBreak: "break-word" }}
+                  >
+                    echelonchiropracticdickson@gmail.com
+                  </a>
                 </div>
 
                 <div className="flex gap-3 items-start">
@@ -255,30 +254,30 @@ export function ContactSection() {
                   href="https://maps.google.com/?q=301+N+Main+St,+Dickson,+TN+37055"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-[#183e2c] text-[#183e2c] uppercase tracking-widest text-xs font-bold px-5 py-3 rounded-sm hover:bg-[#183e2c] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 border border-[#183e2c] text-[#183e2c] uppercase tracking-widest text-xs font-bold px-4 py-3 rounded-sm hover:bg-[#183e2c] hover:text-white transition-colors"
                 >
-                  <span className="material-symbols-outlined text-base">directions</span>
+                  <span className="material-symbols-outlined text-sm">directions</span>
                   Get Directions
                 </a>
                 <a
                   href="tel:615-857-9089"
-                  className="inline-flex items-center gap-2 bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-5 py-3 rounded-sm hover:bg-[#002818] transition-colors"
+                  className="inline-flex items-center gap-1.5 bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-4 py-3 rounded-sm hover:bg-[#002818] transition-colors"
                 >
-                  <span className="material-symbols-outlined text-base">phone</span>
+                  <span className="material-symbols-outlined text-sm">phone</span>
                   Call Now
                 </a>
                 <a
                   href="mailto:echelonchiropracticdickson@gmail.com"
-                  className="inline-flex items-center gap-2 border border-[#d4cdc3] text-[#414843] uppercase tracking-widest text-xs font-bold px-5 py-3 rounded-sm hover:border-[#183e2c] hover:text-[#183e2c] transition-colors"
+                  className="inline-flex items-center gap-1.5 border border-[#d4cdc3] text-[#414843] uppercase tracking-widest text-xs font-bold px-4 py-3 rounded-sm hover:border-[#183e2c] hover:text-[#183e2c] transition-colors"
                 >
-                  <span className="material-symbols-outlined text-base">mail</span>
+                  <span className="material-symbols-outlined text-sm">mail</span>
                   Email Us
                 </a>
               </div>
             </div>
 
             {/* Map */}
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-[#d4cdc3]/20 h-[260px]">
+            <div className="rounded-2xl overflow-hidden shadow-sm border border-[#d4cdc3]/20 h-[220px] md:h-[260px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3218.0!2d-87.3793!3d36.0773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886101a2b1f5b1a5%3A0x1234567890abcdef!2s301%20N%20Main%20St%2C%20Dickson%2C%20TN%2037055!5e0!3m2!1sen!2sus!4v1234567890"
                 width="100%"

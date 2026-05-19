@@ -3,10 +3,10 @@ import heroImage from "@assets/david-trinks-U276SVdo4ik-unsplash_1779218066419.j
 
 export function HeroSection() {
   return (
-    <section className="min-h-[80vh] flex items-center bg-[#183e2c] relative overflow-hidden pt-24">
-      {/* Background Image Setup */}
+    <section className="min-h-[70vh] md:min-h-[80vh] flex items-center bg-[#183e2c] relative overflow-hidden pt-16 md:pt-24">
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[#183e2c]/70 md:bg-gradient-to-r md:from-[#183e2c] md:via-[#183e2c]/85 md:to-[#183e2c]/40 z-10" />
+        <div className="absolute inset-0 bg-[#183e2c]/75 md:bg-gradient-to-r md:from-[#183e2c] md:via-[#183e2c]/85 md:to-[#183e2c]/40 z-10" />
         <img
           src={heroImage}
           alt="Spinal anatomy model"
@@ -14,22 +14,25 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-10 relative z-10">
+      <div className="container mx-auto px-6 md:px-10 relative z-10 py-12 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-2xl"
         >
-          <h1 className="font-serif text-white text-5xl md:text-7xl leading-tight mb-6">
+          <h1
+            className="font-serif text-white leading-tight mb-5 md:mb-6"
+            style={{ fontSize: "clamp(2.4rem, 8vw, 6.5rem)" }}
+          >
             Personalized Chiropractic Care in Dickson, TN
           </h1>
-          <p className="font-sans text-white/90 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+          <p className="font-sans text-white/90 text-base md:text-xl leading-relaxed mb-8 md:mb-10 max-w-xl">
             Helping patients improve mobility, manage pain, and feel better through practical, personalized chiropractic care.
           </p>
           <a
             href="#appointment"
-            className="inline-block bg-white text-[#183e2c] font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-sm hover:bg-gray-100 transition-colors"
+            className="inline-block w-full sm:w-auto text-center bg-white text-[#183e2c] font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-sm hover:bg-gray-100 transition-colors"
           >
             Book Your Consultation
           </a>

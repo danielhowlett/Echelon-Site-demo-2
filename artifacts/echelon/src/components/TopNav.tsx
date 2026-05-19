@@ -20,27 +20,33 @@ export function TopNav() {
     { name: "Location", href: "#location" },
   ];
 
+  const closeMobile = () => setMobileMenuOpen(false);
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
           isScrolled
-            ? "bg-[#fbf9f8]/95 backdrop-blur-md border-[#d4cdc3]/50 shadow-sm py-4"
-            : "bg-[#fbf9f8]/90 backdrop-blur-md border-[#d4cdc3]/30 py-6"
+            ? "bg-[#fbf9f8]/95 backdrop-blur-md border-[#d4cdc3]/50 shadow-sm py-3"
+            : "bg-[#fbf9f8]/90 backdrop-blur-md border-[#d4cdc3]/30 py-4 md:py-5"
         }`}
       >
-        <div className="container mx-auto px-6 md:px-10 flex items-center justify-between">
-          <a href="#" className="font-serif text-2xl text-[#183e2c] font-medium tracking-tight">
+        <div className="container mx-auto px-5 md:px-10 flex items-center justify-between gap-4">
+          {/* Logo */}
+          <a
+            href="#"
+            className="font-serif text-lg md:text-2xl text-[#183e2c] font-medium tracking-tight shrink-0"
+          >
             Echelon Chiropractic
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="group relative uppercase tracking-widest text-xs font-bold text-[#414843] hover:text-[#183e2c] transition-colors"
+                className="group relative uppercase tracking-widest text-xs font-bold text-[#414843] hover:text-[#183e2c] transition-colors whitespace-nowrap"
               >
                 {link.name}
                 <span className="absolute -bottom-1.5 left-0 w-0 h-px bg-[#183e2c] transition-all duration-300 group-hover:w-full" />
@@ -49,26 +55,37 @@ export function TopNav() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-6">
-            <a href="tel:615-857-9089" className="font-sans text-sm font-medium text-[#414843] hover:text-[#183e2c] transition-colors">
+          <div className="hidden lg:flex items-center gap-5 shrink-0">
+            <a
+              href="tel:615-857-9089"
+              className="font-sans text-sm font-medium text-[#414843] hover:text-[#183e2c] transition-colors whitespace-nowrap"
+            >
               615-857-9089
             </a>
             <a
               href="#appointment"
-              className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-6 py-3 rounded-sm hover:bg-[#002818] transition-colors"
+              className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-5 py-3 rounded-sm hover:bg-[#002818] transition-colors whitespace-nowrap"
             >
               Request an Appointment
             </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-[#183e2c] p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: phone + hamburger */}
+          <div className="flex lg:hidden items-center gap-3">
+            <a
+              href="tel:615-857-9089"
+              className="font-sans text-sm font-medium text-[#183e2c] hover:opacity-80 transition-opacity whitespace-nowrap"
+            >
+              615-857-9089
+            </a>
+            <button
+              className="text-[#183e2c] p-1.5 rounded"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -76,34 +93,31 @@ export function TopNav() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-[#fbf9f8] pt-28 px-6 pb-6 flex flex-col md:hidden"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-0 inset-x-0 z-40 bg-[#fbf9f8] border-b border-[#d4cdc3]/40 shadow-lg pt-20 pb-8 px-6 flex flex-col lg:hidden"
           >
-            <nav className="flex flex-col gap-6 items-center pt-10">
+            <nav className="flex flex-col gap-5 mb-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="uppercase tracking-widest text-sm font-bold text-[#183e2c]"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="uppercase tracking-widest text-sm font-bold text-[#183e2c] border-b border-[#d4cdc3]/30 pb-4"
+                  onClick={closeMobile}
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="w-12 h-px bg-[#d4cdc3] my-4" />
-              <a href="tel:615-857-9089" className="font-serif text-xl text-[#183e2c]">
-                615-857-9089
-              </a>
-              <a
-                href="#appointment"
-                className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-8 py-4 rounded-sm mt-4 w-full text-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Request an Appointment
-              </a>
             </nav>
+            <a
+              href="#appointment"
+              className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-8 py-4 rounded-sm text-center hover:bg-[#002818] transition-colors"
+              onClick={closeMobile}
+            >
+              Request an Appointment
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
