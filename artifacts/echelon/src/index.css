@@ -231,34 +231,22 @@
 }
 
 @media (max-width: 768px) {
+  /* Full-bleed overlay layout on mobile — text sits on top of image */
   .hero {
+    position: relative;
     grid-template-columns: 1fr;
-    height: auto;
+    grid-template-rows: 1fr;
+    height: 100svh;
     min-height: 0;
     max-height: none;
   }
 
-  .hero-content {
-    padding: 3rem 1.5rem;
-    padding-top: calc(3rem + 58px);
-  }
-
-  .hero-content h1 {
-    font-size: clamp(2rem, 8.5vw, 3rem);
-    line-height: 1.08;
-    margin-bottom: 1rem;
-  }
-
-  .hero-content p {
-    font-size: 0.95rem;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-  }
-
+  /* Image goes absolutely full-bleed behind everything */
   .hero-image {
-    height: clamp(280px, 45vh, 360px);
+    position: absolute !important;
+    inset: 0;
+    height: 100% !important;
     min-height: 0;
-    position: relative;
   }
 
   .hero-image img {
@@ -270,12 +258,39 @@
     object-position: center center;
   }
 
+  /* Strong bottom-up gradient for text legibility */
   .hero-image .overlay {
     background: linear-gradient(
-      to bottom,
-      rgba(24, 62, 44, 0.45) 0%,
-      rgba(24, 62, 44, 0.15) 60%,
-      transparent 100%
+      to top,
+      rgba(14, 40, 26, 0.97) 0%,
+      rgba(18, 52, 34, 0.88) 40%,
+      rgba(24, 62, 44, 0.45) 70%,
+      rgba(24, 62, 44, 0.1) 100%
     ) !important;
+  }
+
+  /* Text panel: transparent, full-height, text at bottom */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 1.75rem 3rem;
+    padding-top: calc(58px + 1rem);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
+    line-height: 1.08;
+    margin-bottom: 0.875rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-bottom: 1.75rem;
   }
 }
