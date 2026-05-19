@@ -1,9 +1,9 @@
 import { TopNav } from "@/components/TopNav";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { FirstVisitSection } from "@/components/FirstVisitSection";
 import { AboutSection } from "@/components/AboutSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
@@ -14,9 +14,9 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ServicesSection />
-        <FirstVisitSection />
         <AboutSection />
         <TestimonialsSection />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />

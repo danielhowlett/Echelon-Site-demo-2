@@ -1,0 +1,60 @@
+Replace the current FAQ section with a polished, generic FAQ section for Echelon Chiropractic.
+
+Placement:
+Place this section after the “Meet Dr. Nathan Smith” section and before the Request Appointment / Location section.
+
+Design direction:
+- Use an accordion-style FAQ layout, not a grid of cards.
+- Keep the section clean, premium, and simple.
+- Use thin divider lines between FAQ items.
+- Avoid heavy shadows and boxed cards.
+- Use the site’s cream/off-white background and forest green branding.
+- Use an elegant serif heading.
+- Make the accordion mobile-friendly with easy-to-tap rows.
+- Use plus/minus icons or chevrons for open and closed states.
+- Keep spacing balanced so the section does not feel too tall or empty.
+
+Section eyebrow:
+COMMON QUESTIONS
+
+Heading:
+Questions Before Your First Visit?
+
+Subtitle:
+Here are a few helpful things to know before requesting an appointment with Echelon Chiropractic.
+
+FAQ items:
+
+1. What does a chiropractor help with?
+Chiropractic care focuses on how the spine, joints, muscles, and nervous system work together. Many patients visit a chiropractor for back pain, neck pain, stiffness, mobility concerns, or general wellness support.
+
+2. What happens during a first visit?
+Your first visit typically includes a conversation about your symptoms, health history, and goals. Dr. Smith may also evaluate movement, posture, and areas of discomfort before discussing a care plan.
+
+3. Do I need to be in pain to see a chiropractor?
+No. Some patients seek care because they are dealing with discomfort, while others want support with mobility, posture, or ongoing wellness.
+
+4. How do I request an appointment?
+You can request an appointment through the form on this website. The office will follow up to confirm availability and next steps.
+
+5. Where is Echelon Chiropractic located?
+Echelon Chiropractic is located inside VitaLive Health and Wellness at 301 N Main Street in Dickson, TN 37055.
+
+6. Is online scheduling available?
+Online scheduling is coming soon. For now, patients can request an appointment through the website or contact the office directly.
+
+7. What services are offered?
+Echelon Chiropractic offers chiropractic adjustments, new patient examinations and re-examinations, therapeutic exercises and rehabilitation, soft tissue therapy, wellness and maintenance care, and flexion distraction.
+
+8. What should I bring to my first visit?
+Bring a photo ID and any information that may help Dr. Smith better understand your health history, symptoms, and goals.
+
+Add a small CTA under the FAQ:
+Still have questions? Reach out and we’ll be happy to help.
+
+Buttons:
+- Request Appointment
+- Contact the Office
+
+Important:
+Keep the FAQ language general, professional, and safe. Do not make medical guarantees. Do not mention pricing, insurance, or exact appointment length unless that information is confirmed later.
