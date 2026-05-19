@@ -1,0 +1,118 @@
+The hero split layout is closer, but it is too large for the screen now. Fix the hero so it fits cleanly within the first screen without feeling zoomed in.
+
+Current issues:
+- The hero headline is too large.
+- The hero section is too tall.
+- The text has too much vertical space and pushes the button low.
+- The right image is oversized and cropped too aggressively.
+- The whole hero feels like it does not fit naturally on a normal desktop screen.
+
+Make these changes:
+
+1. Reduce the hero height
+- Set desktop hero min-height to around 680px or 78vh, whichever is smaller/better.
+- Do not let the hero become taller than the viewport.
+- Use something like:
+  min-height: min(78vh, 720px);
+
+2. Reduce the heading size
+- Use a responsive clamp that is smaller than the current one.
+- Suggested:
+  font-size: clamp(3rem, 5vw, 5.25rem);
+  line-height: 1.08;
+- The headline should still feel premium, but it should not dominate the entire screen.
+
+3. Improve text width and wrapping
+- Set the hero text max-width around 650px.
+- Keep the headline wrapping naturally, but avoid making each word take up its own line.
+- The text should feel like the Stitch design: large, elegant, but balanced.
+
+4. Adjust hero padding
+- Reduce top and bottom padding inside the left panel.
+- Use something like:
+  padding: clamp(3rem, 6vw, 6rem);
+- Vertically center the text block in the left panel.
+
+5. Fix the right image
+- Keep the image on the right side only.
+- Use:
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+- Make sure the spine image fills the right column without making the hero taller than needed.
+
+6. Button spacing
+- Move the button closer to the subtitle.
+- Use around 2rem margin-top, not excessive spacing.
+- Keep the button size professional but not huge.
+
+7. Mobile responsiveness
+- On screens below 768px:
+  - Stack the hero sections or make the text panel full width.
+  - Reduce hero height.
+  - Use font-size: clamp(2.4rem, 11vw, 4rem);
+  - Make the CTA button full-width or nearly full-width.
+  - Ensure no horizontal scrolling.
+
+Important:
+The hero should match the Stitch feel: split green left panel, image right panel, balanced height, and a headline that fits comfortably within the first screen.
+
+If Replit keeps making the hero too big, give it this direct CSS instruction too:
+
+Update the hero CSS directly:
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: min(78vh, 720px);
+  max-height: 760px;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 6rem);
+  max-width: 720px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 5vw, 5.25rem);
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .hero-content {
+    padding: 4rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+  }
+
+  .hero-image {
+    min-height: 320px;
+  }
+}

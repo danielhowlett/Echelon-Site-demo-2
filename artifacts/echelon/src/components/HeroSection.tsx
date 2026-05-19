@@ -3,23 +3,40 @@ import heroImage from "@assets/david-trinks-U276SVdo4ik-unsplash_1779218066419.j
 
 export function HeroSection() {
   return (
-    <section className="w-full flex flex-col md:flex-row" style={{ minHeight: "clamp(500px, 80vh, 900px)" }}>
-
+    <section
+      className="w-full flex flex-col md:flex-row overflow-hidden"
+      style={{ minHeight: "min(78vh, 720px)", maxHeight: "760px" }}
+    >
       {/* Left — Forest green text panel */}
-      <div className="flex-1 bg-[#183e2c] flex items-center px-8 md:px-14 lg:px-20 py-20 md:py-0">
+      <div
+        className="bg-[#183e2c] flex items-center md:w-1/2 w-full"
+        style={{ padding: "clamp(3rem, 6vw, 6rem)" }}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-lg w-full"
+          transition={{ duration: 0.75 }}
+          style={{ maxWidth: "650px", width: "100%" }}
         >
           <h1
-            className="font-serif text-white leading-tight mb-6"
-            style={{ fontSize: "clamp(2.4rem, 4.5vw, 5.5rem)" }}
+            className="font-serif text-white"
+            style={{
+              fontSize: "clamp(2.4rem, 5vw, 5.25rem)",
+              lineHeight: 1.08,
+              marginBottom: "1.25rem",
+            }}
           >
             Personalized Chiropractic Care in Dickson, TN
           </h1>
-          <p className="font-sans text-white/85 text-base md:text-lg leading-relaxed mb-10 max-w-md">
+          <p
+            className="font-sans text-white/85"
+            style={{
+              fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
+              lineHeight: 1.6,
+              maxWidth: "520px",
+              marginBottom: "2rem",
+            }}
+          >
             Helping patients improve mobility, manage pain, and feel better through practical, personalized chiropractic care.
           </p>
           <a
@@ -32,16 +49,15 @@ export function HeroSection() {
       </div>
 
       {/* Right — Image panel */}
-      <div className="relative w-full md:w-1/2 h-64 md:h-auto shrink-0 overflow-hidden">
+      <div className="relative md:w-1/2 w-full" style={{ minHeight: "280px" }}>
         <img
           src={heroImage}
           alt="Spinal anatomy model"
-          className="w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center center" }}
         />
-        {/* Subtle overlay to blend with brand */}
-        <div className="absolute inset-0 bg-[#183e2c]/25" />
+        <div className="absolute inset-0 bg-[#183e2c]/20" />
       </div>
-
     </section>
   );
 }
