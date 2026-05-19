@@ -1,0 +1,64 @@
+Fix the homepage/landing page so it is fully mobile responsive and no longer looks broken or oversized on smaller screens.
+
+Main issues to fix:
+- The hero headline is way too large and does not scale well.
+- The navigation gets cramped, especially with the phone number and appointment button.
+- The phone number is awkwardly wrapping in the header.
+- The hero section feels too tall and heavy.
+- The background image/overlay needs better positioning so it still looks good on tablets and phones.
+- Buttons and text need better spacing on mobile.
+
+Header fixes:
+- Make the header responsive.
+- On desktop, keep the logo, nav links, phone number, and appointment button in one clean row.
+- Prevent the phone number from breaking onto two lines.
+- On tablet/mobile, collapse the nav into a hamburger menu or stack it cleanly.
+- Make the logo smaller on mobile so it does not dominate the header.
+- Make the “Request an Appointment” button fit properly on mobile.
+
+Hero fixes:
+- Make the hero headline use responsive font sizing with clamp(), so it scales down naturally.
+- Desktop headline should still feel premium and large.
+- Mobile headline should be readable and not take over the entire screen.
+- Suggested headline sizing:
+  font-size: clamp(2.4rem, 8vw, 6.5rem);
+- Reduce hero padding on mobile.
+- Keep the text container at a reasonable max-width.
+- Make the hero section min-height smaller on mobile, around 70vh instead of huge full-screen spacing.
+- Make the background image use object-fit: cover and adjust object-position so the image looks good on desktop and mobile.
+- Strengthen the dark green overlay slightly so the white text stays readable.
+
+CTA button fixes:
+- Make the “Book Your Consultation” button full-width or nearly full-width on small mobile screens.
+- Keep it normal width on desktop.
+- Add enough spacing below the subtitle before the button.
+
+Responsive breakpoints:
+- Add clear styles for desktop, tablet, and mobile.
+- At widths below 768px:
+  - Stack or collapse the header navigation.
+  - Reduce hero headline size.
+  - Center or left-align the hero text consistently.
+  - Reduce padding.
+  - Make buttons easier to tap.
+- At widths below 480px:
+  - Further reduce headline size.
+  - Make header spacing tighter.
+  - Ensure no horizontal scrolling.
+
+Also check the entire page for mobile issues:
+- No text should overflow.
+- No section should create horizontal scroll.
+- Cards and columns should stack cleanly.
+- Forms should become one column on mobile.
+- Map/contact/location sections should stack cleanly.
+- Footer columns should stack and long email addresses should wrap properly.
+
+Keep the current brand style:
+- Forest green
+- Cream/off-white
+- Elegant serif headings
+- Clean chiropractic/wellness feel
+
+Final goal:
+The landing page should look polished on desktop, tablet, and phone. The hero should feel premium but not oversized, and the mobile version should be easy to read, navigate, and use.

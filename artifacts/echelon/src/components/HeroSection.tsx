@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
+import heroImage from "@assets/david-trinks-U276SVdo4ik-unsplash_1779218066419.jpg";
 
 export function HeroSection() {
   return (
     <section className="min-h-[80vh] flex items-center bg-[#183e2c] relative overflow-hidden pt-24">
       {/* Background Image Setup */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[#183e2c]/60 md:bg-gradient-to-r md:from-[#183e2c] md:via-[#183e2c]/90 md:to-transparent z-10" />
+        <div className="absolute inset-0 bg-[#183e2c]/70 md:bg-gradient-to-r md:from-[#183e2c] md:via-[#183e2c]/85 md:to-[#183e2c]/40 z-10" />
         <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2PGzvQX8eDedskTT16h8oBmCWh6fSAjVGkBydwEG98TtmtqhKLCriRs22NMQpisvjEPCgAlabpQTC0K9uSXoEFKI7B8TG3MEIh9bIPscfnHGS_0weMo-uh8CJoDQlLWkwI4M6fgyEWZDEJTfI79n3iv7fla0WXZGY87MjHL8i73ADTBsvRxjVitn3x2Z_bmon8mnMfPt0w9dM9yArv6stz8hEjTw8Tf1PN3YXpL9JZ1R9rPxQOsQrDPfrAZsrwCAv6HAowJ2J4jo"
-          alt="Chiropractic Care"
-          className="w-full h-full object-cover object-top"
+          src={heroImage}
+          alt="Spinal anatomy model"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 

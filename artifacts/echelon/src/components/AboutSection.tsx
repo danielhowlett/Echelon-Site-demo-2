@@ -12,11 +12,13 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="order-2 md:order-1"
           >
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuApVffGhch8--3v4knVNmdbhOX4OvlmIEGUHmb0XwA6KUNuPUFDo0sXdgtEvheidce4SpbfpOc0_sEO3usLyFQnD10QZv8yXnbEc9BZkAlIOt5_lNOdr7gmIgunFOSlS-ADBJVu6XfCIF9AF2nx_oAaNfoH75pvTCEl2h4U2lL4uqSLRONtNTuYHfnneDDB7sFWuavbgdNg3zfl3gecAVDmBbKEVaK1cKpfnnBYMOzbqeX8SrwK3OWQ6lmC3A8DTsiv7OVlrAD6wqs"
-              alt="Dr. Nathan Smith"
-              className="rounded-2xl overflow-hidden shadow-lg aspect-square object-cover w-full max-w-[500px] mx-auto md:mr-auto md:ml-0"
-            />
+            <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-[500px] mx-auto md:mr-auto md:ml-0 aspect-[4/5]">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuApVffGhch8--3v4knVNmdbhOX4OvlmIEGUHmb0XwA6KUNuPUFDo0sXdgtEvheidce4SpbfpOc0_sEO3usLyFQnD10QZv8yXnbEc9BZkAlIOt5_lNOdr7gmIgunFOSlS-ADBJVu6XfCIF9AF2nx_oAaNfoH75pvTCEl2h4U2lL4uqSLRONtNTuYHfnneDDB7sFWuavbgdNg3zfl3gecAVDmBbKEVaK1cKpfnnBYMOzbqeX8SrwK3OWQ6lmC3A8DTsiv7OVlrAD6wqs"
+                alt="Dr. Nathan Smith"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
           </motion.div>
 
           <motion.div

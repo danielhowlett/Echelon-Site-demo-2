@@ -1,0 +1,64 @@
+Review the homepage layout and fix the visual issues in the lower half of the page.
+
+Main problems to fix:
+1. In the “Meet Dr. Nathan Smith” section, his head is getting cropped at the top of the image. Adjust the image styling so his full head and upper body are visible. Use object-position: top center or adjust the image container/crop so the portrait does not cut off his hair/head. Keep the image large and professional, but make sure the framing looks natural.
+
+2. The “Request Appointment” section and the “Our Location” section currently feel disconnected and take up too much vertical space. Combine them into one polished section before the footer.
+
+Create a new combined section called:
+“Request an Appointment”
+
+Subtitle:
+“Send us your information and we’ll follow up to confirm availability. You can also call, email, or visit us inside VitaLive Health and Wellness.”
+
+Layout:
+- Use a centered max-width container.
+- On desktop, make a two-column layout:
+  - Left column: Request Appointment form
+  - Right column: Location + Contact Information + Map
+- On mobile, stack the form first, then the location/contact card.
+
+Appointment form:
+- Keep the existing form fields:
+  - Full Name
+  - Phone Number
+  - Email Address
+  - Preferred Time
+  - Reason for Visit
+- Keep the “Request Appointment” submit button.
+- Make the form card cleaner and slightly less oversized so it does not dominate the page.
+- Use white or soft cream background, rounded corners, subtle border, and soft shadow.
+
+Location/contact card:
+- Include:
+  - Echelon Chiropractic
+  - Located inside VitaLive Health and Wellness
+  - 301 N Main Street, Dickson, TN 37055
+  - Phone: 615-857-9089
+  - Email: echelonchiropracticdickson@gmail.com
+  - Hours: Monday–Friday: By Appointment
+  - Online scheduling coming soon
+- Include the Google map inside the same card or directly below the contact details in the right column.
+- Add buttons for “Get Directions,” “Call Now,” and “Email Us.”
+- Make sure the map is not too huge on desktop and not awkwardly separated from the contact details.
+
+3. Remove the old standalone “Our Location” section after combining it with the appointment form. There should not be a separate location block below the form anymore.
+
+4. Fix the large blank space before the footer. Tighten vertical padding so the page flows naturally from the combined appointment/location section into the footer.
+
+5. Fix the footer layout. The email address is too long and is overlapping or pushing into the Quick Links column. Make the footer responsive and prevent text overlap by:
+- Increasing column spacing
+- Allowing the email to wrap naturally
+- Using word-break: break-word where needed
+- Making the footer stack cleanly on smaller screens
+- Keeping Quick Links aligned and readable
+
+6. Keep the existing brand style:
+- Forest green
+- Cream/off-white backgrounds
+- Elegant serif headings
+- Clean healthcare/wellness feel
+- Rounded cards, soft shadows, balanced spacing
+
+Final goal:
+The bottom of the site should feel like one intentional conversion section: users can request an appointment, see where the clinic is located, and contact the office without scrolling through separate disconnected blocks.

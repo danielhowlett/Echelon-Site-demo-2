@@ -2,8 +2,7 @@ import { TopNav } from "@/components/TopNav";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { AboutSection } from "@/components/AboutSection";
-import { AppointmentSection } from "@/components/AppointmentSection";
-import { LocationSection } from "@/components/LocationSection";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -14,8 +13,7 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <AboutSection />
-        <AppointmentSection />
-        <LocationSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
