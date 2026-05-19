@@ -1,0 +1,57 @@
+Add a new homepage section called “What to Expect at Your First Visit,” but do NOT design it as a grid of cards. The site already has several card-based sections, so this section should feel more editorial, open, and premium.
+
+Place it after the services section and before the Meet Dr. Nathan Smith section.
+
+Design direction:
+- Use a clean two-column layout on desktop.
+- Left side: section heading, short intro paragraph, and a small CTA button.
+- Right side: a vertical numbered timeline with 4 steps.
+- Do not put each step inside a full card.
+- Instead, use large step numbers, thin divider lines, subtle icons if appropriate, and clean text blocks.
+- Use plenty of whitespace so it feels calm and professional.
+- On mobile, stack the heading first, then the vertical timeline.
+
+Section heading:
+What to Expect at Your First Visit
+
+Intro copy:
+Your first visit is designed to help us understand your needs, answer your questions, and create a care plan that makes sense for you.
+
+Timeline steps:
+
+01 — Consultation
+We’ll talk through your symptoms, health history, and goals so Dr. Smith can better understand what brought you in.
+
+02 — Examination
+Dr. Smith will evaluate movement, posture, and areas of discomfort to get a clearer picture of what may be contributing to the issue.
+
+03 — Care Plan
+You’ll receive a personalized care plan based on your needs, comfort level, and long-term wellness goals.
+
+04 — Follow-Up Care
+We’ll track your progress over time and adjust care as needed to support better movement, comfort, and function.
+
+Also add a small, simple CTA near the intro:
+Button text: Request Appointment
+
+Style:
+- Cream or off-white background
+- Forest green headings
+- Muted sage accents for numbers or divider lines
+- Elegant serif heading
+- Clean readable body text
+- No heavy shadows
+- No boxed card grid
+- Keep it premium, calm, and healthcare/wellness focused
+
+Important:
+Avoid making medical guarantees. Keep the language general and reassuring.
+
+For variety across the full site, I’d think of it like this:
+
+Hero = split image layout
+Services = cards
+First Visit = vertical timeline
+Doctor section = image + editorial bio
+Testimonials = carousel
+Appointment/location = form + contact panel
