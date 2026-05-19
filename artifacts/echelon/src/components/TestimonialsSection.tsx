@@ -74,7 +74,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Desktop grid — 3 columns */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.slice(0, 3).map((t, i) => (
             <motion.div
               key={i}
@@ -97,7 +97,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Desktop row — remaining 2 centered */}
-        <div className="hidden md:flex justify-center gap-6 lg:gap-8 mt-6 lg:mt-8">
+        <div className="hidden lg:flex justify-center gap-6 lg:gap-8 mt-6 lg:mt-8">
           {testimonials.slice(3).map((t, i) => (
             <motion.div
               key={i}
@@ -119,8 +119,8 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Mobile carousel */}
-        <div className="md:hidden">
+        {/* Mobile + tablet carousel */}
+        <div className="lg:hidden">
           <div className="relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
