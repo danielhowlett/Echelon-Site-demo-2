@@ -1,0 +1,51 @@
+Fix the hero section so it matches the original Stitch design more closely.
+
+Right now the Replit version looks wrong because the spine image is being used as a full-width background behind the text, the headline is way too large, and the layout does not match the intended split-panel design.
+
+Rebuild the hero section as a two-column split layout:
+
+Desktop hero layout:
+- Full-width section directly under the header.
+- Left 50%: solid dark forest green background.
+- Right 50%: spine/chiropractic image.
+- The left side should contain all hero text and the CTA button.
+- The right side should only contain the image.
+- Add a subtle dark green overlay on the right image so it matches the brand and blends with the left panel.
+- Add a thin vertical divider between the text side and image side if needed.
+
+Hero text:
+- Headline: “Personalized Chiropractic Care in Dickson, TN”
+- Keep the headline large and elegant, but not oversized.
+- Use responsive font sizing with clamp().
+- Suggested desktop size: clamp(3.5rem, 6vw, 6rem)
+- Keep the headline max-width around 720px so it wraps like the Stitch version, not one giant full-page block.
+- Subtitle should sit below the headline with readable spacing.
+- Button should say “Book Your Consultation.”
+
+Hero spacing:
+- Use a centered inner container or consistent padding.
+- Left hero content should be vertically centered.
+- Desktop padding should feel spacious but not excessive.
+- The section should be around 75–85vh on desktop, not awkwardly oversized.
+
+Image styling:
+- The spine image should be inside the right column, not the full background of the whole hero.
+- Use object-fit: cover.
+- Use object-position: center right or center center so the spine is visible like the Stitch screenshot.
+- Make the image fill the full height and width of the right column.
+
+Mobile behavior:
+- Under 768px, stack the hero:
+  - Text panel first
+  - Image panel second, or hide the image if it creates too much height
+- Reduce the headline size on mobile with clamp().
+- Make the CTA button full-width or nearly full-width on small screens.
+- Ensure there is no horizontal scrolling.
+
+Also fix the header if needed:
+- Prevent the phone number from wrapping.
+- Keep the appointment button from crowding the nav.
+- Make the header responsive on mobile.
+
+Important:
+Do not use the hero image as the background for the entire hero section. The hero should be a split layout with a solid green left side and image right side, matching the Stitch reference design.
