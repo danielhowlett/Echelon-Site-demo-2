@@ -6,6 +6,8 @@ export function AboutSection() {
     <section id="about" className="bg-white py-16 md:py-28 px-5 md:px-10 lg:px-20 overflow-hidden">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+          {/* Image — left on desktop, after bio text but before quote on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -13,15 +15,23 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             className="order-2 md:order-1"
           >
-            <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-[480px] mx-auto md:mr-auto md:ml-0 aspect-[4/5]">
+            <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-[480px] mx-auto aspect-[4/5]">
               <img
                 src={drPhoto}
                 alt="Dr. Nathan Smith"
                 className="w-full h-full object-cover object-top"
               />
             </div>
+
+            {/* Quote — mobile only, sits below image */}
+            <div className="md:hidden mt-6 pt-6 border-t border-[#d4cdc3]">
+              <p className="font-serif italic text-[#605f51] text-base text-center">
+                — Committed to your long-term wellbeing.
+              </p>
+            </div>
           </motion.div>
 
+          {/* Text — right on desktop, top on mobile */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -44,12 +54,14 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="mt-8 md:mt-12 pt-6 border-t border-[#d4cdc3]">
+            {/* Quote — desktop only, inside text column */}
+            <div className="hidden md:block mt-12 pt-6 border-t border-[#d4cdc3]">
               <p className="font-serif italic text-[#605f51] text-base md:text-lg">
                 — Committed to your long-term wellbeing.
               </p>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
