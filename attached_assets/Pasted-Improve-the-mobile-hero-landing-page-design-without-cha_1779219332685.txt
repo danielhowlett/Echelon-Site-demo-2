@@ -1,0 +1,55 @@
+Improve the mobile hero/landing page design without changing the desktop layout too much.
+
+Current mobile issues:
+- The hero headline is too large and takes up too much vertical space.
+- The green hero content area is too tall.
+- The CTA button is too wide and feels heavy.
+- The spine image underneath is too tall and makes the mobile landing page feel oversized.
+- The mobile hero should feel premium, compact, and easy to read within the first screen.
+
+Mobile-specific changes:
+1. Reduce the mobile hero headline size.
+Use a smaller responsive clamp:
+font-size: clamp(3rem, 13vw, 4.5rem);
+line-height: 1.05;
+
+2. Control the headline line breaks on mobile so it reads cleanly:
+Personalized
+Chiropractic Care
+in Dickson, TN
+
+Do not let the headline create awkward breaks.
+
+3. Reduce mobile hero padding.
+Use about 2.25rem left/right padding and 3.5rem top/bottom padding.
+
+4. Reduce the green hero content height.
+The text panel should not take up the entire first screen. Let it fit naturally around the text and button.
+
+5. Make the CTA button smaller on mobile.
+- Keep it wide enough to tap easily.
+- Do not make it full width edge-to-edge.
+- Set max-width around 360px.
+- Center it or keep it left-aligned consistently with the text.
+- Reduce vertical padding slightly.
+
+6. Reduce the image height on mobile.
+The spine image should be a shorter visual accent, around 280px–360px tall, not a huge second screen.
+Use:
+height: clamp(280px, 45vh, 360px);
+object-fit: cover;
+object-position: center center;
+
+7. Add a subtle dark green overlay to the image on mobile so it matches the brand better.
+
+8. Header mobile fixes:
+- Keep logo, phone number, and hamburger aligned.
+- Make the logo slightly smaller if needed.
+- Keep the phone number on one line.
+- Add balanced padding so the header does not feel cramped.
+
+9. Prevent horizontal scrolling.
+Make sure body and html use overflow-x: hidden and all sections stay within the viewport.
+
+Final goal:
+The mobile landing page should show the header, headline, subtitle, and button comfortably without feeling oversized. The image should support the hero, not dominate the page.

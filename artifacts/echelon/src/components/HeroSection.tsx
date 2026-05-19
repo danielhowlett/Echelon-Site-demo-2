@@ -13,14 +13,21 @@ export function HeroSection() {
           transition={{ duration: 0.75 }}
         >
           <h1 className="font-serif text-white">
-            Personalized Chiropractic Care in Dickson, TN
+            {/* Mobile: controlled breaks — hide/show per breakpoint */}
+            <span className="sm:hidden">
+              Personalized<br />Chiropractic Care<br />in Dickson, TN
+            </span>
+            <span className="hidden sm:inline">
+              Personalized Chiropractic Care in Dickson, TN
+            </span>
           </h1>
           <p className="font-sans text-white/85">
             Helping patients improve mobility, manage pain, and feel better through practical, personalized chiropractic care.
           </p>
           <a
             href="#appointment"
-            className="inline-block w-full sm:w-auto text-center bg-white text-[#183e2c] font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-sm hover:bg-gray-100 transition-colors"
+            className="inline-block text-center bg-white text-[#183e2c] font-bold uppercase tracking-widest text-xs px-8 py-3.5 rounded-sm hover:bg-gray-100 transition-colors"
+            style={{ maxWidth: "360px", width: "100%" }}
           >
             Book Your Consultation
           </a>
