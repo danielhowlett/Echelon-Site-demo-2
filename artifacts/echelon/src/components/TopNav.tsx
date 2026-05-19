@@ -72,14 +72,8 @@ export function TopNav() {
             </a>
           </div>
 
-          {/* Mobile: phone + hamburger */}
+          {/* Mobile: hamburger only */}
           <div className="flex lg:hidden items-center gap-3">
-            <a
-              href="tel:615-857-9089"
-              className="font-sans text-sm font-medium text-[#183e2c] hover:opacity-80 transition-opacity whitespace-nowrap"
-            >
-              615-857-9089
-            </a>
             <button
               className="text-[#183e2c] p-1.5 rounded"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
