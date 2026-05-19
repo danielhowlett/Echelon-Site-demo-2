@@ -1,3 +1,5 @@
+import logoImage from "@assets/logo_transparent.png";
+
 export function Footer() {
   return (
     <footer className="bg-[#e4e2e2] py-12 md:py-14 px-5 md:px-10 lg:px-20 border-t border-[#c1c8c1]/30">
@@ -5,7 +7,11 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-12">
 
           <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1">
-            <h3 className="font-serif text-xl text-[#183e2c]">Echelon Chiropractic</h3>
+            <img
+              src={logoImage}
+              alt="Echelon Chiropractic"
+              className="h-14 w-auto object-contain object-left"
+            />
             <p className="font-sans text-[#414843] text-sm leading-relaxed max-w-xs">
               Personalized Chiropractic Care in Dickson, TN.
             </p>

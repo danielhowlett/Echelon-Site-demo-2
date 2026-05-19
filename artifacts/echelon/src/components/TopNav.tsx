@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoImage from "@assets/logo_transparent.png";
 
 export function TopNav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,11 +34,12 @@ export function TopNav() {
       >
         <div className="container mx-auto px-5 md:px-10 flex items-center justify-between gap-4">
           {/* Logo */}
-          <a
-            href="#"
-            className="font-serif text-lg md:text-2xl text-[#183e2c] font-medium tracking-tight shrink-0"
-          >
-            Echelon Chiropractic
+          <a href="#" className="shrink-0 flex items-center">
+            <img
+              src={logoImage}
+              alt="Echelon Chiropractic"
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Nav */}
