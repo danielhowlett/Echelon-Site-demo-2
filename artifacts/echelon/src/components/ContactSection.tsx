@@ -7,7 +7,6 @@ import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
 const schema = z.object({
@@ -62,7 +61,7 @@ export function ContactSection() {
             Request an Appointment
           </h2>
           <p className="font-sans text-[#605f51] text-base md:text-lg mt-4 max-w-xl">
-            Send us your information and we'll follow up to confirm availability.
+            Send us your information and the office will follow up to confirm availability.
           </p>
         </motion.div>
 
@@ -76,10 +75,15 @@ export function ContactSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-3 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-[#e8e2d8]"
           >
-            <div className="flex items-center gap-3 mb-8">
+            {/* Future upgrade: replace this request form with a Cal.com, Square Appointments,
+                or Google Calendar booking link once the client has access and can complete setup. */}
+            <div className="flex items-center gap-3 mb-2">
               <div className="w-1 h-8 bg-[#183e2c] rounded-full" />
-              <h3 className="font-serif text-2xl text-[#183e2c]">Book Your Visit</h3>
+              <h3 className="font-serif text-2xl text-[#183e2c]">Appointment Request</h3>
             </div>
+            <p className="font-sans text-xs text-[#183e2c]/50 mb-7 pl-4">
+              Appointment requests are not confirmed until you hear back from the office.
+            </p>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
@@ -147,21 +151,15 @@ export function ContactSection() {
                     name="time"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Preferred Time</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger
-                              className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus:ring-0 focus:border-[#183e2c] bg-transparent text-[#1b1c1c] shadow-none text-base transition-colors"
-                              data-testid="select-time"
-                            >
-                              <SelectValue placeholder="Select a time" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="morning">Morning (8am – 12pm)</SelectItem>
-                            <SelectItem value="afternoon">Afternoon (12pm – 5pm)</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Preferred Day / Time</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="e.g. Tuesday morning, after 2pm"
+                            {...field}
+                            className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base transition-colors"
+                            data-testid="input-time"
+                          />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -173,10 +171,10 @@ export function ContactSection() {
                   name="reason"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Reason for Visit</FormLabel>
+                      <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Brief Note</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Briefly describe your reason for visiting..."
+                          placeholder="Anything helpful for us to know before your visit..."
                           className="resize-none border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base min-h-[80px] transition-colors"
                           {...field}
                           data-testid="textarea-reason"
@@ -187,15 +185,18 @@ export function ContactSection() {
                   )}
                 />
 
-                <div className="pt-2">
+                <div className="pt-2 space-y-4">
                   <Button
                     type="submit"
                     disabled={isSubmitting}
                     className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-10 py-5 rounded-xl hover:bg-[#0e2a1e] h-auto transition-colors w-full sm:w-auto"
                     data-testid="button-submit"
                   >
-                    {isSubmitting ? "Submitting…" : "Request Appointment"}
+                    {isSubmitting ? "Submitting…" : "Send Request"}
                   </Button>
+                  <p className="font-sans text-[11px] text-[#183e2c]/40 leading-relaxed max-w-sm">
+                    Please do not submit emergency or highly sensitive medical information through this form.
+                  </p>
                 </div>
               </form>
             </Form>
