@@ -4,31 +4,23 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     q: "What does a chiropractor help with?",
-    a: "Chiropractic care focuses on how the spine, joints, muscles, and nervous system work together. Many patients visit a chiropractor for back pain, neck pain, stiffness, mobility concerns, or general wellness support.",
+    a: "Chiropractic care focuses on how the spine, joints, muscles, and nervous system work together. Many patients visit for back pain, neck pain, stiffness, mobility concerns, or general wellness support.",
   },
   {
     q: "What happens during a first visit?",
-    a: "Your first visit typically includes a conversation about your symptoms, health history, and goals. Dr. Smith may also evaluate movement, posture, and areas of discomfort before discussing a care plan.",
+    a: "Your first visit includes a conversation about your symptoms, health history, and goals. Dr. Smith will also evaluate movement, posture, and areas of discomfort before discussing a care plan.",
   },
   {
     q: "Do I need to be in pain to see a chiropractor?",
-    a: "No. Some patients seek care because they are dealing with discomfort, while others want support with mobility, posture, or ongoing wellness.",
-  },
-  {
-    q: "How do I request an appointment?",
-    a: "You can request an appointment through the form on this website. The office will follow up to confirm availability and next steps.",
+    a: "Not at all. Some patients come in because of discomfort, while others seek support with mobility, posture, or long-term wellness.",
   },
   {
     q: "Where is Echelon Chiropractic located?",
-    a: "Echelon Chiropractic is located inside VitaLive Health and Wellness at 301 N Main Street in Dickson, TN 37055.",
-  },
-  {
-    q: "Is online scheduling available?",
-    a: "Online scheduling is coming soon. For now, patients can request an appointment through the website or contact the office directly.",
+    a: "We are located inside VitaLive Health and Wellness at 301 N Main Street, Dickson, TN 37055.",
   },
   {
     q: "What services are offered?",
-    a: "Echelon Chiropractic offers chiropractic adjustments, new patient examinations and re-examinations, therapeutic exercises and rehabilitation, soft tissue therapy, wellness and maintenance care, and flexion distraction.",
+    a: "Echelon Chiropractic offers chiropractic adjustments, new patient exams, therapeutic exercises, soft tissue therapy, wellness and maintenance care, and flexion distraction.",
   },
   {
     q: "What should I bring to my first visit?",
@@ -55,32 +47,33 @@ export function FaqSection() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="bg-[#fffbe9] py-20 md:py-28">
+    <section className="bg-[#fffbe9] pt-16 pb-14 md:pt-20 md:pb-16">
       <div className="container mx-auto px-5 md:px-10">
+
         {/* Heading */}
-        <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-10 md:mb-12 max-w-xl mx-auto">
           <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#183e2c]/50 mb-3">
             Common Questions
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#183e2c] leading-tight mb-4">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#183e2c] leading-tight mb-3">
             Questions Before Your First Visit?
           </h2>
-          <p className="font-sans text-[#183e2c]/60 text-base md:text-lg leading-relaxed">
-            Here are a few helpful things to know before requesting an appointment with Echelon Chiropractic.
+          <p className="font-sans text-[#183e2c]/55 text-sm md:text-base leading-relaxed">
+            A few helpful things to know before reaching out to Echelon Chiropractic.
           </p>
         </div>
 
         {/* Accordion */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {faqs.map((item, i) => (
             <div key={i}>
               <div className="h-px bg-[#183e2c]/10" />
               <button
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between gap-4 py-5 md:py-6 text-left group"
+                className="w-full flex items-center justify-between gap-4 py-4 md:py-5 text-left group"
                 aria-expanded={openIndex === i}
               >
-                <span className="font-serif text-base md:text-lg text-[#183e2c] group-hover:opacity-75 transition-opacity leading-snug pr-2">
+                <span className="font-serif text-base md:text-[17px] text-[#183e2c] group-hover:opacity-70 transition-opacity leading-snug pr-2">
                   {item.q}
                 </span>
                 <PlusMinusIcon open={openIndex === i} />
@@ -92,10 +85,10 @@ export function FaqSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: "easeInOut" }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="font-sans text-sm md:text-base text-[#183e2c]/65 leading-relaxed pb-6 pr-8">
+                    <p className="font-sans text-sm text-[#183e2c]/60 leading-relaxed pb-5 pr-8">
                       {item.a}
                     </p>
                   </motion.div>
@@ -106,12 +99,13 @@ export function FaqSection() {
           <div className="h-px bg-[#183e2c]/10" />
         </div>
 
-        {/* Transition into appointment section */}
-        <div className="text-center mt-14 md:mt-16">
-          <p className="font-serif text-xl md:text-2xl text-[#183e2c]/70 italic leading-relaxed">
-            Ready to take the next step? We'd love to hear from you.
+        {/* Lead-in to contact section */}
+        <div className="text-center mt-10 md:mt-12">
+          <p className="font-serif text-lg md:text-xl text-[#183e2c]/60 italic">
+            Ready to take the next step? Send us a request below and we'll follow up soon.
           </p>
         </div>
+
       </div>
     </section>
   );
