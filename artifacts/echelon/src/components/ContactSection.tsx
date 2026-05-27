@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { GOOGLE_APPS_SCRIPT_ENDPOINT } from "@/config/appointmentForm";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -19,24 +19,88 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
+/** Premium form fields: cream fill, soft border, no box shadow */
+const fieldClassName =
+  "h-11 w-full rounded-lg border border-[#183e2c]/12 bg-[#faf8f4] px-4 py-2.5 text-base text-[#1b1c1c] shadow-none placeholder:text-[#b0a99a] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#183e2c]/20 focus-visible:border-[#183e2c] disabled:cursor-not-allowed disabled:opacity-50 md:text-base";
+
+const textareaClassName =
+  "min-h-[104px] w-full resize-none rounded-lg border border-[#183e2c]/12 bg-[#faf8f4] px-4 py-3 text-base text-[#1b1c1c] shadow-none placeholder:text-[#b0a99a] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#183e2c]/20 focus-visible:border-[#183e2c] disabled:cursor-not-allowed disabled:opacity-50 md:text-base";
+
+async function submitToGoogleSheets(data: FormValues): Promise<void> {
+  if (
+    !GOOGLE_APPS_SCRIPT_ENDPOINT ||
+    GOOGLE_APPS_SCRIPT_ENDPOINT === "YOUR_GOOGLE_APPS_SCRIPT_ENDPOINT_HERE"
+  ) {
+    throw new Error(
+      "Appointment form is not connected yet. Please add your Google Apps Script Web App URL."
+    );
+  }
+
+  const payload = {
+    fullName: data.name,
+    phone: data.phone,
+    email: data.email,
+    preferredTime: data.time,
+    message: data.reason ?? "",
+    submittedAt: new Date().toISOString(),
+    pageUrl: typeof window !== "undefined" ? window.location.href : "",
+  };
+
+  const response = await fetch(GOOGLE_APPS_SCRIPT_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to send your request. Please try again or call the office.");
+  }
+
+  try {
+    const result = await response.json();
+    if (result && typeof result === "object" && "success" in result && result.success === false) {
+      throw new Error(
+        typeof result.message === "string"
+          ? result.message
+          : "Unable to send your request. Please try again or call the office."
+      );
+    }
+  } catch (parseError) {
+    if (parseError instanceof Error && parseError.message.includes("Unable to send")) {
+      throw parseError;
+    }
+    // Non-JSON or empty body is acceptable if HTTP status was ok
+  }
+}
+
 export function ContactSection() {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { name: "", phone: "", email: "", time: "", reason: "" },
   });
 
-  const onSubmit = async (_data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    toast({
-      title: "Request Submitted",
-      description: "We'll be in touch soon to confirm your appointment.",
-    });
-    form.reset();
-    setIsSubmitting(false);
+    setSubmitSuccess(false);
+    setSubmitError(null);
+
+    try {
+      await submitToGoogleSheets(data);
+      form.reset();
+      setSubmitSuccess(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or call 615-857-9089."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,8 +139,6 @@ export function ContactSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-3 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-[#e8e2d8]"
           >
-            {/* Future upgrade: replace this request form with a Cal.com, Square Appointments,
-                or Google Calendar booking link once the client has access and can complete setup. */}
             <div className="flex items-center gap-3 mb-2">
               <div className="w-1 h-8 bg-[#183e2c] rounded-full" />
               <h3 className="font-serif text-2xl text-[#183e2c]">Appointment Request</h3>
@@ -86,19 +148,21 @@ export function ContactSection() {
             </p>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Full Name</FormLabel>
+                      <FormItem className="space-y-2">
+                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">
+                          Full Name
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Your Name"
                             {...field}
-                            className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base transition-colors"
+                            className={fieldClassName}
                             data-testid="input-name"
                           />
                         </FormControl>
@@ -110,13 +174,15 @@ export function ContactSection() {
                     control={form.control}
                     name="phone"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Phone Number</FormLabel>
+                      <FormItem className="space-y-2">
+                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">
+                          Phone Number
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="(555) 555-5555"
                             {...field}
-                            className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base transition-colors"
+                            className={fieldClassName}
                             data-testid="input-phone"
                           />
                         </FormControl>
@@ -126,19 +192,21 @@ export function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Email Address</FormLabel>
+                      <FormItem className="space-y-2">
+                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">
+                          Email Address
+                        </FormLabel>
                         <FormControl>
                           <Input
                             type="email"
                             placeholder="you@example.com"
                             {...field}
-                            className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base transition-colors"
+                            className={fieldClassName}
                             data-testid="input-email"
                           />
                         </FormControl>
@@ -150,13 +218,15 @@ export function ContactSection() {
                     control={form.control}
                     name="time"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Preferred Day / Time</FormLabel>
+                      <FormItem className="space-y-2">
+                        <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">
+                          Preferred Day / Time
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="e.g. Tuesday morning, after 2pm"
                             {...field}
-                            className="border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base transition-colors"
+                            className={fieldClassName}
                             data-testid="input-time"
                           />
                         </FormControl>
@@ -170,12 +240,14 @@ export function ContactSection() {
                   control={form.control}
                   name="reason"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">Brief Note</FormLabel>
+                    <FormItem className="space-y-2">
+                      <FormLabel className="uppercase tracking-widest text-[10px] font-bold text-[#183e2c]/70">
+                        Brief Note
+                      </FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Anything helpful for us to know before your visit..."
-                          className="resize-none border-0 border-b-2 border-[#e8e2d8] rounded-none px-0 py-2.5 focus-visible:ring-0 focus-visible:border-[#183e2c] bg-transparent text-[#1b1c1c] placeholder:text-[#b0a99a] text-base min-h-[80px] transition-colors"
+                          className={textareaClassName}
                           {...field}
                           data-testid="textarea-reason"
                         />
@@ -185,14 +257,32 @@ export function ContactSection() {
                   )}
                 />
 
-                <div className="pt-2 space-y-4">
+                {submitSuccess && (
+                  <p
+                    role="status"
+                    className="rounded-lg border border-[#183e2c]/15 bg-[#faf8f4] px-4 py-3 font-sans text-sm text-[#183e2c] leading-relaxed"
+                  >
+                    Thank you. Your request has been sent and the office will follow up.
+                  </p>
+                )}
+
+                {submitError && (
+                  <p
+                    role="alert"
+                    className="rounded-lg border border-red-200/80 bg-red-50/60 px-4 py-3 font-sans text-sm text-red-900/90 leading-relaxed"
+                  >
+                    {submitError}
+                  </p>
+                )}
+
+                <div className="pt-1 space-y-4">
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-10 py-5 rounded-xl hover:bg-[#0e2a1e] h-auto transition-colors w-full sm:w-auto"
+                    className="bg-[#183e2c] text-white uppercase tracking-widest text-xs font-bold px-10 py-5 rounded-xl hover:bg-[#0e2a1e] h-auto transition-colors w-full sm:w-auto disabled:opacity-60"
                     data-testid="button-submit"
                   >
-                    {isSubmitting ? "Submitting…" : "Send Request"}
+                    {isSubmitting ? "Sending…" : "Send Request"}
                   </Button>
                   <p className="font-sans text-[11px] text-[#183e2c]/40 leading-relaxed max-w-sm">
                     Please do not submit emergency or highly sensitive medical information through this form.
@@ -211,7 +301,6 @@ export function ContactSection() {
             className="lg:col-span-2 flex flex-col gap-0 rounded-3xl overflow-hidden shadow-sm border border-[#183e2c]/10"
             id="location"
           >
-            {/* Green info panel */}
             <div className="bg-[#183e2c] p-7 md:p-8 flex-1">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-1 h-8 bg-white/30 rounded-full" />
@@ -274,7 +363,6 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Map flush to bottom */}
             <div className="h-[200px] md:h-[240px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3218.0!2d-87.3793!3d36.0773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886101a2b1f5b1a5%3A0x1234567890abcdef!2s301%20N%20Main%20St%2C%20Dickson%2C%20TN%2037055!5e0!3m2!1sen!2sus!4v1234567890"
