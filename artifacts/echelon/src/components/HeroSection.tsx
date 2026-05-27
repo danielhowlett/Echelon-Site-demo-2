@@ -36,7 +36,10 @@ export function HeroSection() {
 
       {/* Right — Image panel */}
       <div className="hero-image">
-        <img src={heroImage} alt="Spinal anatomy model" />
+        <img
+          src={heroImage}
+          alt="Spine model used for chiropractic care and patient education"
+        />
         {/* Gradient blending left edge into green panel */}
         <div
           className="overlay"

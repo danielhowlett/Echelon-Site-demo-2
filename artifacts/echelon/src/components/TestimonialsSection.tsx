@@ -71,6 +71,9 @@ export function TestimonialsSection() {
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#183e2c] leading-tight">
             What Patients Are Saying
           </h2>
+          <p className="font-sans text-[#183e2c]/55 text-sm md:text-base leading-relaxed mt-4 max-w-2xl mx-auto">
+            A few words from patients who have visited Echelon Chiropractic in Dickson, TN.
+          </p>
         </div>
 
         {/* Desktop/tablet grid */}

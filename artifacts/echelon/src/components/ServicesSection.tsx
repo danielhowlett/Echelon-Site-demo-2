@@ -53,10 +53,10 @@ export function ServicesSection() {
       <div className="container mx-auto">
         <div className="max-w-3xl mb-10 md:mb-16">
           <h2 className="font-serif text-[#183e2c] mb-5" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
-            Chiropractic Services Designed Around You
+            Chiropractic Services in Dickson, Tennessee
           </h2>
           <p className="font-sans text-[#414843] text-base md:text-lg leading-relaxed">
-            We offer comprehensive care tailored to your unique needs. Our approach focuses on long-term wellness, mobility, and effective pain management.
+            We offer comprehensive chiropractic care in Dickson, TN tailored to your needs—focused on mobility, long-term wellness, and practical pain relief.
           </p>
         </div>
 
