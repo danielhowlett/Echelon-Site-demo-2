@@ -18,7 +18,7 @@ export function AboutSection() {
             <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-[480px] mx-auto aspect-[4/5]">
               <img
                 src={drPhoto}
-                alt="Dr. Nathan Smith"
+                alt="Dr. Nathan Smith, chiropractor in Dickson, Tennessee"
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -47,7 +47,7 @@ export function AboutSection() {
             </h2>
             <div className="space-y-5">
               <p className="font-sans text-[#414843] text-base md:text-lg leading-relaxed">
-                Dr. Nathan Smith is a dedicated chiropractor committed to providing effective, patient-centered care. With a focus on understanding the root cause of discomfort, he develops practical treatment plans to help patients regain mobility and improve their quality of life.
+                Dr. Nathan Smith is a dedicated chiropractor committed to providing effective, patient-centered care in Dickson, Tennessee. With a focus on understanding the root cause of discomfort, he develops practical treatment plans to help patients regain mobility and improve their quality of life.
               </p>
               <p className="font-sans text-[#414843] text-base md:text-lg leading-relaxed">
                 His practice at Echelon Chiropractic is built on the principles of clear communication, comprehensive care, and empowering patients to take an active role in their health journey.
