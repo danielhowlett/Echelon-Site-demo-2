@@ -61,10 +61,10 @@ export function TestimonialsSection() {
   const next = () => setActive((a) => (a + 1) % testimonials.length);
 
   return (
-    <section className="bg-[#fffbe9] py-20 md:py-28 overflow-hidden">
+    <section className="bg-[#fffbe9] py-14 md:py-18 lg:py-20 overflow-hidden border-b border-[#183e2c]/10">
       <div className="container mx-auto px-5 md:px-10">
         {/* Heading */}
-        <div className="text-center mb-12 md:mb-14">
+        <div className="text-center mb-10 md:mb-12">
           <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#183e2c]/50 mb-3">
             Patient Stories
           </p>
@@ -73,39 +73,22 @@ export function TestimonialsSection() {
           </h2>
         </div>
 
-        {/* Desktop grid — 3 columns */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.slice(0, 3).map((t, i) => (
+        {/* Desktop/tablet grid */}
+        <div className="hidden lg:grid gap-6 lg:gap-7 xl:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-12">
+          {testimonials.map((t, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-7 flex flex-col gap-3 shadow-sm border border-[#183e2c]/6"
-            >
-              <StarRow />
-              <p className="font-sans text-[#183e2c]/75 text-sm leading-relaxed flex-1">
-                "{t.quote}"
-              </p>
-              <div className="pt-3 border-t border-[#183e2c]/10">
-                <p className="font-serif text-[#183e2c] font-medium text-sm">{t.name}</p>
-                <p className="font-sans text-[11px] text-[#183e2c]/45 tracking-wide mt-0.5">{t.detail}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Desktop row — remaining 2 centered */}
-        <div className="hidden lg:flex justify-center gap-6 lg:gap-8 mt-6 lg:mt-8">
-          {testimonials.slice(3).map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (i + 3) * 0.1 }}
-              className="bg-white rounded-2xl p-7 flex flex-col gap-3 shadow-sm border border-[#183e2c]/6 w-full max-w-sm lg:max-w-md"
+              className={[
+                "bg-white rounded-2xl p-7 flex flex-col gap-3 shadow-sm border border-[#183e2c]/6 w-full",
+                // 5 cards: keep the last row balanced at xl by making the final two span half width each.
+                i >= 3 ? "xl:col-span-6" : "xl:col-span-4",
+                // On md (2 cols), avoid an orphaned final card by letting it span full width.
+                i === testimonials.length - 1 ? "md:col-span-2 xl:col-span-6" : "",
+              ].join(" ")}
             >
               <StarRow />
               <p className="font-sans text-[#183e2c]/75 text-sm leading-relaxed flex-1">

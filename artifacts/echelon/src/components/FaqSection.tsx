@@ -47,11 +47,11 @@ export function FaqSection() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="bg-[#fffbe9] pt-16 pb-14 md:pt-20 md:pb-16">
+    <section className="bg-[#fffbe9] py-12 md:py-14 border-b border-[#183e2c]/10">
       <div className="container mx-auto px-5 md:px-10">
 
         {/* Heading */}
-        <div className="text-center mb-10 md:mb-12 max-w-xl mx-auto">
+        <div className="text-center mb-9 md:mb-10 max-w-2xl mx-auto">
           <p className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#183e2c]/50 mb-3">
             Common Questions
           </p>
@@ -64,7 +64,7 @@ export function FaqSection() {
         </div>
 
         {/* Accordion */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {faqs.map((item, i) => (
             <div key={i}>
               <div className="h-px bg-[#183e2c]/10" />
@@ -100,10 +100,16 @@ export function FaqSection() {
         </div>
 
         {/* Lead-in to contact section */}
-        <div className="text-center mt-10 md:mt-12">
-          <p className="font-serif text-lg md:text-xl text-[#183e2c]/60 italic">
+        <div className="text-center mt-8 md:mt-9">
+          <p className="font-serif text-lg md:text-xl text-[#183e2c]/60 italic max-w-3xl mx-auto">
             Ready to take the next step? Send us a request below and we'll follow up soon.
           </p>
+          <a
+            href="#appointment"
+            className="inline-flex mt-5 items-center justify-center bg-[#183e2c] text-white uppercase tracking-widest text-[11px] font-bold px-6 py-3 rounded-xl hover:bg-[#0e2a1e] transition-colors"
+          >
+            Request an Appointment
+          </a>
         </div>
 
       </div>
