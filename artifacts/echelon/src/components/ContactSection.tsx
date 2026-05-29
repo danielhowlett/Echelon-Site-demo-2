@@ -46,31 +46,14 @@ async function submitToGoogleSheets(data: FormValues): Promise<void> {
     pageUrl: typeof window !== "undefined" ? window.location.href : "",
   };
 
-  const response = await fetch(GOOGLE_APPS_SCRIPT_ENDPOINT, {
+  await fetch(GOOGLE_APPS_SCRIPT_ENDPOINT, {
     method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
     body: JSON.stringify(payload),
   });
-
-  if (!response.ok) {
-    throw new Error("Unable to send your request. Please try again or call the office.");
-  }
-
-  try {
-    const result = await response.json();
-    if (result && typeof result === "object" && "success" in result && result.success === false) {
-      throw new Error(
-        typeof result.message === "string"
-          ? result.message
-          : "Unable to send your request. Please try again or call the office."
-      );
-    }
-  } catch (parseError) {
-    if (parseError instanceof Error && parseError.message.includes("Unable to send")) {
-      throw parseError;
-    }
-    // Non-JSON or empty body is acceptable if HTTP status was ok
-  }
 }
 
 export function ContactSection() {
