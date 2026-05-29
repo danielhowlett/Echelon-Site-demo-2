@@ -4,4 +4,4 @@
  * and paste the deployment URL here.
  */
 export const GOOGLE_APPS_SCRIPT_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbxlRHq6nL9iMaRBDiuHi0j6z1VEF_gypCwXSCaZkgte-pkEoXg5DNFteB2coaMV4rnx/exec";
+  "https://script.google.com/macros/s/AKfycbwRmkR4GxSkY1-_nzwA6ioAHOMpIAt5g4EiHMn_OJ8/exec";
